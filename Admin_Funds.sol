@@ -1,14 +1,14 @@
-pragma solidity ^0.8.0;
+pragma solidity 0.8.20;
 
 contract Funds{
-    address payable public owner;
+    address payable public admin;
     uint public limit;
    constructor() {
-        owner = payable (msg.sender);
-        limit = 5 ether; 
+        admin = payable (msg.sender);
+        limit = 1 ether; 
     }
  function admin_limit (uint newLimit)  public {
-        require(msg.sender == owner,"Only the admin can set the limit");
+        require(msg.sender == admin,"Only the admin can set the limit");
         limit = newLimit;
     }
  function withdraw(uint amount) payable public {
